@@ -28,6 +28,8 @@ module.exports = function (r_queue) {
       MASK = r_queue[counter] >> mask_offset,
       Payload_len = r_queue[counter++] & payload_len_offset;
 
+  if (r_queue.length < counter + Payload_len) return null;
+
   // if payload length equals to 126
   // the next 16 bit length is payload length
   Payload_len === 126 && 
@@ -55,10 +57,9 @@ module.exports = function (r_queue) {
     // skip to payload first index
     counter += 4;
 
-    for (var i = 0; i < Payload_len; i++) {
-      var j = i % 4;
-      Payload_data[i] = r_queue[counter + i] ^ Masking_key[j];
-    }
+    for (var i = 0; i < Payload_len; i++)
+      Payload_data[i] = r_queue[counter + i] ^ Masking_key[i & 3];
+
   } else {
     Payload_data = r_queue.slice(counter, counter + Payload_len);
   }
@@ -80,6 +81,6 @@ module.exports = function (r_queue) {
       Payload_len: Payload_len,
       Payload_data: Payload_data
     }, 
-    r_queue: r_queue
+    remain: r_queue
   };
 };
