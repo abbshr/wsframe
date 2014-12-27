@@ -1,4 +1,4 @@
-a websocket frame parser and generator separated from fsilder_ws(Rainy)v0.3
+a simple & fast websocket frame parser and generator separated from [RocketEngine](https://github.com/abbshr/fSlider_ws)
 
 #### Parser
 
