@@ -1,6 +1,5 @@
 /* WebSocket Frame Generator */
 
-var typeOf = require('../utils/typeOf.js');
 /*
 * @frame<JSON>: a JSON object as readable_data resolved by decoder
 * return: frame<Buffer>
@@ -63,3 +62,7 @@ module.exports = function (frame) {
   // return the raw frame
   return Buffer.concat([preBytes, payBytes]);
 };
+
+function typeOf(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+}
