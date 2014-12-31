@@ -17,7 +17,7 @@ return object:
     Payload_data: <Buffer>
   },
 
-  r_queue: <Buffer> (remain data in @buffer)
+  remain: <Buffer> (remain data in @buffer)
 }
 ```
 
