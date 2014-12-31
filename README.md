@@ -1,4 +1,4 @@
-a simple & fast websocket frame parser and generator separated from [RocketEngine](https://github.com/abbshr/fSlider_ws)
+a simple & fast websocket frame parser and generator separated from [RocketEngine](https://github.com/abbshr/RocketEngine)
 
 #### Parser
 
